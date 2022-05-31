@@ -1,4 +1,5 @@
 package product;
+
 // Product can be an abstract class. All products require these elements. We need to add at least one abstract method to this class for the subclasses to implement. 
 public abstract class Product {
 
@@ -6,47 +7,52 @@ public abstract class Product {
 	private String category;
 	private String description;
 	private double price;
-	
+
 //Work on creating a SKU later this is a plus one. SKU can be generated using the first two letters of the category and then
-	//adding an incremented number
+	// adding an incremented number
 //	private String sku;
 //	Set<String> skuList = new TreeSet<String>();
-	
+
 	public String getName() {
-	return name;
+		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getCategory() {
 		return category;
 	}
+
 	public void setCategory(String category) {
 		this.category = category;
 	}
+
 	public String getDescription() {
 		return description;
 	}
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
 	public double getPrice() {
 		return price;
 	}
+
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	
+
 	public void generalProductDetails() {
-		System.out.println(
-				"Name: " + this.name + System.lineSeparator()+
-				"Category: " + this.category+ System.lineSeparator()+
-				"Description: " +this.description+ System.lineSeparator()+
-				"Price: " + this .price + System.lineSeparator());
+		System.out.println("Name: " + this.name + System.lineSeparator() + "Category: " + this.category
+				+ System.lineSeparator() + "Description: " + this.description + System.lineSeparator() + "Price: "
+				+ this.price + System.lineSeparator());
 	}
+
 	public abstract void specificProductDetails();
-	
-	
+
 //	public Product(String name, String category, String description, double price) {
 //		this.name = name;
 //		this.description = description;
@@ -79,4 +85,4 @@ public abstract class Product {
 //		list.add(p10);
 //		list.add(p11);
 //		list.add(p12);
-	}
+}
