@@ -1,4 +1,3 @@
-
 public class CheckPayment extends Payment {
 
 	private String checkNumber;
