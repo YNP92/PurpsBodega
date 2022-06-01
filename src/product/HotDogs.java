@@ -1,6 +1,6 @@
 package product;
 
-public class HotDogs extends Product {
+public class HotDogs extends Products {
 	private boolean addCheese;
 	private boolean addMustard;
 	private boolean addKetchup;

@@ -1,6 +1,6 @@
 package product;
 
-public class Drinks extends Product {
+public class Drinks extends Products {
 	//Drinks: Coffee, Beer, Water
 	// Fields in addition to Product
 

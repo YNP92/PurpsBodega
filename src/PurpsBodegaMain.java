@@ -4,6 +4,7 @@ import java.time.format.DateTimeFormatter;
 import product.DeliMeats;
 import product.Drinks;
 import product.HotDogs;
+import product.Inventory;
 
 public class PurpsBodegaMain {
 
@@ -11,13 +12,14 @@ public class PurpsBodegaMain {
 		// TODO Auto-generated method stub
 		// viewMenu provides the customer with all options available in purps bodega.
 //		viewMenu();
-		LocalDate date = LocalDate.now();
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy");
-		date = date.plusDays(7);
-		String hardDate = date.format(formatter);
-		System.out.println("hardDate: "+ hardDate);
-		System.out.println(date.format(formatter));
-		
+//		LocalDate date = LocalDate.now();
+//		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy");
+//		date = date.plusDays(7);
+//		String hardDate = date.format(formatter);
+//		System.out.println("hardDate: "+ hardDate);
+//		System.out.println(date.format(formatter));
+		String header = String.format("|%-10s|%-10s|%10s|", "ID","Product Name","Price");
+		System.out.println(header);
 		
 	}
 

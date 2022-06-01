@@ -3,7 +3,7 @@ package product;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class DeliMeats extends Product {
+public class DeliMeats extends Products {
 	// Default DATE entry is MMDDYYYY
 	private LocalDate expireDate;
 
@@ -39,7 +39,7 @@ public class DeliMeats extends Product {
 		LocalDate date = LocalDate.now();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy");
 		date = date.plusDays(days);
-		String hardDate = date.format(formatter);
+//		String hardDate = date.format(formatter);
 //		System.out.println("hardDate: "+ hardDate);
 //		System.out.println(date.format(formatter));
 		return date;

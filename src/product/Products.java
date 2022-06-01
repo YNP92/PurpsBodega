@@ -1,7 +1,7 @@
 package product;
 
 // Product can be an abstract class. All products require these elements. We need to add at least one abstract method to this class for the subclasses to implement. 
-public abstract class Product {
+public abstract class Products {
 
 	private String name;
 	private String category;
