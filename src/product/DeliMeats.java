@@ -16,6 +16,15 @@ public class DeliMeats extends Products {
 	}
 
 	// Constructors
+//	public DeliMeats(String name, String category, String description, double price, int expireDate) {
+//		setName(name);
+//		setCategory(category);
+//		setDescription(description);
+//		setPrice(price);
+//		setExpireDate(expireDate);
+//
+//	}
+	//implement LocalDate for expirationdate if you have enough time
 	public DeliMeats(String name, String category, String description, double price, LocalDate expireDate) {
 		setName(name);
 		setCategory(category);
@@ -39,9 +48,9 @@ public class DeliMeats extends Products {
 		LocalDate date = LocalDate.now();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy");
 		date = date.plusDays(days);
-//		String hardDate = date.format(formatter);
-//		System.out.println("hardDate: "+ hardDate);
-//		System.out.println(date.format(formatter));
+////		String hardDate = date.format(formatter);
+////		System.out.println("hardDate: "+ hardDate);
+////		System.out.println(date.format(formatter));
 		return date;
 		
 	}

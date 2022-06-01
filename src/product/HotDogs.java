@@ -63,16 +63,16 @@ public class HotDogs extends Products {
 		else {
 			System.out.println();
 			if(addCheese == true) {	
-				System.out.println("add Cheese");
+				System.out.println("add Cheese\n");
 			}
 			if(addMustard == true) {	
-				System.out.println("add Mustard");
+				System.out.println("add Mustard\n");
 			}
 			if(addKetchup == true) {	
-				System.out.println("add Ketchup");
+				System.out.println("add Ketchup\n");
 			}
 			if(addChilli == true) {	
-				System.out.println("add Chilli");
+				System.out.println("add Chilli\n");
 			}
 		}
 	}

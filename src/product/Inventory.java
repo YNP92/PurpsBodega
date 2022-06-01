@@ -16,8 +16,8 @@ public class Inventory {
 	// Map<String, Integer>>();
 	// Fields
 
-	static TreeMap<Integer, Products> inventory = new TreeMap<Integer, Products>();
-	static int productID = 0;
+	private TreeMap<Integer, Products> inventory = new TreeMap<Integer, Products>();
+	private int productID = 0;
 
 	// Get Set
 	public TreeMap<Integer, Products> getInventory() {
@@ -26,6 +26,7 @@ public class Inventory {
 
 	public void setInventory(Products product) {
 		inventory.put(setID(), product);
+		System.out.println(productID);
 	}
 
 //Constructor, only need a default one
@@ -38,6 +39,7 @@ public class Inventory {
 	private int setID() {
 		try {
 			if (productID == 0) {
+				productID++;
 				return 0;
 			} else if (productID == inventory.lastKey()) {
 				productID++;
@@ -49,7 +51,7 @@ public class Inventory {
 
 	}
 
-	public static void showInventory() {
+	public  void showInventory() {
 		String header = String.format("|%20d %20d %20d|", "ID","Product Name","Price");
 		 for (Entry<Integer, Products> entry : inventory.entrySet()) 
 			 

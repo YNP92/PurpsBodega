@@ -38,9 +38,8 @@ public class Drinks extends Products {
 	public Drinks(String name, String category, String description, double price) {
 	}
 
-	// for alcoholic or non-alcoholic beverage.
+	// for alcoholic.
 	public Drinks(String name, String category, String description, double price, boolean containsAlcohol) {
-
 		setName(name);
 		setCategory(category);
 		setDescription(description);
@@ -55,12 +54,12 @@ public class Drinks extends Products {
 		setCategory(category);
 		setDescription(description);
 		setPrice(price);
-		if (cream <= 0) {
+		if (cream < 0) {
 			setCream(0);
 		} else {
 			setCream(cream);
 		}
-		if (sugar <= 0) {
+		if (sugar < 0) {
 			setSugar(0);
 		} else {
 			setSugar(sugar);
@@ -75,7 +74,7 @@ public class Drinks extends Products {
 			System.out.println("Beverage: is alcoholic");
 		}
 		if (cream >= 1 || sugar >= 1) {
-			System.out.println("Cofee with " + cream + "cream and " + sugar + "sugar");
+			System.out.println(" Cofee with " + cream + " cream and " + sugar + " sugar ");
 		}
 
 	}
