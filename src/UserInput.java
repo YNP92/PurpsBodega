@@ -1,6 +1,10 @@
 import java.util.Scanner;
 
 public class UserInput {
+	public static void main(String[] args) {
+		
+		
+	}
 	private Scanner scnr = new Scanner(System.in);
 
 	private int integerInput;
