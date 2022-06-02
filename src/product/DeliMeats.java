@@ -47,6 +47,7 @@ public class DeliMeats extends Products {
 
 		LocalDate date = LocalDate.now();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy");
+		
 		date = date.plusDays(days);
 ////		String hardDate = date.format(formatter);
 ////		System.out.println("hardDate: "+ hardDate);

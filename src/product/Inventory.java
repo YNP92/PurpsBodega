@@ -1,7 +1,10 @@
 package product;
 
+import java.util.ArrayList;
 import java.util.Map.Entry;
+import java.util.Set;
 import java.util.TreeMap;
+import java.util.TreeSet;
 
 public class Inventory {
 
@@ -22,11 +25,13 @@ public class Inventory {
 	// Get Set
 	public TreeMap<Integer, Products> getInventory() {
 		return inventory;
+		
 	}
 
 	public void setInventory(Products product) {
 		inventory.put(setID(), product);
-		System.out.println(productID);
+		productID++;
+//		System.out.println(productID);
 	}
 
 //Constructor, only need a default one
@@ -34,15 +39,11 @@ public class Inventory {
 	}
 
 //methods
-	// Setting the key value ( which is used as the product ID) will be handled by
-	// the class so we dont run into exceptions regarding repeat keys.
+	//set key for the inventory Treemap
 	private int setID() {
 		try {
 			if (productID == 0) {
-				productID++;
 				return 0;
-			} else if (productID == inventory.lastKey()) {
-				productID++;
 			}
 		} catch (Exception e) {
 			System.out.println("an error occured when setting the ID of the product");
@@ -50,13 +51,33 @@ public class Inventory {
 		return productID;
 
 	}
+	//display this objects inventory
+	public void showInventoryAll() {
+		String header = String.format("%-5s|%20s |%10s|", "ID", "Product Name", "Price");
+		String header1 = String.format("---------------------------------------");
+		System.out.println(header);
+		System.out.println(header1);
+		for (Entry<Integer, Products> entry : getInventory().entrySet()) {
+			String lineItem = String.format("%-5d|%20s |%10s|", entry.getKey(), entry.getValue().getName(),
+					entry.getValue().getPrice());
+			System.out.println(lineItem);
 
-	public  void showInventory() {
-		String header = String.format("|%20d %20d %20d|", "ID","Product Name","Price");
-		 for (Entry<Integer, Products> entry : inventory.entrySet()) 
-			 
-	            System.out.println("Product ID = " + entry.getKey() + ", Product = " + entry.getValue());
-	            
+		}
+
+	
+//	public void showInventoryCatagories() {
+//		//used a set because we only want unique categories.
+//		Set<String> listOfCategories = new TreeSet<String>();
+//		int id = 0;
+//		for (Entry<Integer, Products> entry : getInventory().entrySet()) {
+//			listOfCategories.add(entry.getValue().getCategory());
+//		}
+//		for (String category:listOfCategories ) {
+//			String lineItem = String.format("%-5d|%20s |%10s|", id ,)
+//					
+//		}
+//		}
+		
 	}
-
-}
+		
+	}
