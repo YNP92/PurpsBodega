@@ -1,32 +1,36 @@
 import java.util.Scanner;
 
 public class UserInput {
-	private Scanner scnr = new Scanner(System.in);
+	private static Scanner scnr = new Scanner(System.in);
 
-	private int integerInput;
-	private double doubleInput;
-	private String stringInput;
-	private boolean booleanInput;
+	private static int integerInput;
+	private static double doubleInput;
+	private static String stringInput;
+	private static boolean booleanInput;
 
-	public String stringGet() {
-		System.out.println("Please enter a text.");
-		stringInput = scnr.nextLine(); 
+	public static String stringGet() {
+		stringInput = scnr.nextLine();
 		return stringInput;
 	}
-	
+
 	public int integerGet() {
 		System.out.println("Please enter a number.");
 		integerInput = scnr.nextInt();
+		scnr.nextLine();
 		return integerInput;
 	}
-	public double doubleGet() {
+
+	public static double doubleGet() {
 		System.out.println("Please enter a decimal number");
 		doubleInput = scnr.nextDouble();
+		scnr.nextLine();
 		return doubleInput;
 	}
+
 	public boolean booleanGet() {
 		System.out.println("Please enter y or n");
 		booleanInput = scnr.nextBoolean();
+		scnr.nextLine();
 		return booleanInput;
 	}
 }
