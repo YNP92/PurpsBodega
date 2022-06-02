@@ -34,11 +34,15 @@ public class Drinks extends Products {
 	}
 
 	// Constructors:
-	// Default
+	// Default for non alcoholic drinks
 	public Drinks(String name, String category, String description, double price) {
+		setName(name);
+		setCategory(category);
+		setDescription(description);
+		setPrice(price);
 	}
 
-	// for alcoholic.
+	// For alcoholic drinks.
 	public Drinks(String name, String category, String description, double price, boolean containsAlcohol) {
 		setName(name);
 		setCategory(category);
@@ -48,7 +52,7 @@ public class Drinks extends Products {
 
 	}
 
-	// constructor for Coffee or Tea
+	// Constructor for Coffee
 	public Drinks(String name, String category, String description, double price, int cream, int sugar) {
 		setName(name);
 		setCategory(category);
