@@ -1,4 +1,4 @@
-public class CashPayment extends Payment{
+public class CashPayment extends Payment {
 
 	static double initialChange;
 	static double change;
@@ -10,63 +10,68 @@ public class CashPayment extends Payment{
 	static int dimeCount;
 	static int nickelCount;
 	static int pennyCount;
-	
+
 	public CashPayment(double amount) {
 		super(amount);
 	}
 
 	public static double getChange(double tender, double amount) {
-		if(amount < tender) {
+		if (amount < tender) {
 			System.out.println("That isn't enough money");
 		}
-			initialChange = tender - amount;
-			change = tender - amount;
-			return initialChange;
+		initialChange = tender - amount;
+		change = tender - amount;
+		return initialChange;
 	}
-	
-	
+
 	public static String returnChange(double change) {
-		
+
 		while (change >= 1) {
-			if(change >= 20) {
+			if (change >= 20) {
 				change = change - 20;
 				twentyCount++;
 				continue;
-			} if(change >= 10) {
+			}
+			if (change >= 10) {
 				change = change - 10;
 				tenCount++;
 				continue;
-			} if(change >= 5) {
+			}
+			if (change >= 5) {
 				change = change - 5;
 				fiveCount++;
 				continue;
-			} if(change >= 1) {
+			}
+			if (change >= 1) {
 				change = change - 1;
 				dollarCount++;
 				continue;
 			}
 		}
 		while (change != 0) {
-			if(change >= .25) {
+			if (change >= .25) {
 				change = change - .25;
 				quarterCount++;
 				continue;
-			} if(change >= .1) {
+			}
+			if (change >= .1) {
 				change = change - .1;
 				dimeCount++;
 				continue;
-			} if(change >= .05) {
+			}
+			if (change >= .05) {
 				change = change - .05;
 				nickelCount++;
 				continue;
-			} if(change >= .01) {
+			}
+			if (change >= .01) {
 				change = change - .01;
 				pennyCount++;
 				continue;
 			}
 		}
-		return "Your change is " + twentyCount + " 20's, " + tenCount + " 10's, " + fiveCount + " 5's, "
-				+ dollarCount + " 1's, " + quarterCount + " quarters, " + dimeCount + " dimes, "
-				+ nickelCount + " nickels, and " + pennyCount + " pennies.";
+		return "Your change is " + twentyCount + " 20's, " + tenCount + " 10's, " + fiveCount + " 5's, " + dollarCount
+				+ " 1's, " + quarterCount + " quarters, " + dimeCount + " dimes, " + nickelCount + " nickels, and "
+				+ pennyCount + " pennies.";
 	}
 }

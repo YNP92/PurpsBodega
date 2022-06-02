@@ -18,4 +18,8 @@ public class CheckPayment extends Payment {
 	public boolean validateCheckNumber(String checkNumber) {
 		return checkNumber.matches("^[0-9]{4}$");
 	}
+	
+	public void pay() {
+		System.out.println("Check accepted, thank you and have a wonderful day!");
+	}
 }
