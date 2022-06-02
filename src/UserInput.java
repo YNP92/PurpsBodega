@@ -5,20 +5,20 @@ public class UserInput {
 
 	}
 
-	private Scanner scnr = new Scanner(System.in);
+	private static Scanner scnr = new Scanner(System.in);
 
-	private int integerInput;
-	private double doubleInput;
-	private String stringInput;
-	private boolean booleanInput;
+	private static int integerInput;
+	private static double doubleInput;
+	private static String stringInput;
+	private static boolean booleanInput;
 
-	public String stringGet() {
+	public static String stringGet() {
 		System.out.println("Please enter a text.");
 		stringInput = scnr.nextLine();
 		return stringInput;
 	}
 
-	public int integerGet() {
+	public static int integerGet() {
 
 		do {
 			System.out.println("Please enter a number between 1-15.");
@@ -31,7 +31,7 @@ public class UserInput {
 		return integerInput;
 	}
 
-	public double doubleGet() {
+	public static double doubleGet() {
 
 		do {
 			System.out.println("Please enter a decimal number");
@@ -44,7 +44,7 @@ public class UserInput {
 		return doubleInput;
 	}
 
-	public boolean booleanGet() {
+	public static boolean booleanGet() {
 		System.out.println("Please enter y or n");
 		booleanInput = scnr.nextBoolean();
 		return booleanInput;
