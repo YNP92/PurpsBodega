@@ -2,6 +2,28 @@
 public class CreditCardPayment extends Payment {
 
 	private String creditCardNumber, expirationDate, cVV;
+	int validationCount = 0;
+
+	public void pay() {
+		System.out.println("Please enter your credit card number: ");
+		creditCardNumber = UserInput.stringGet();
+		if (validateCreditCardNumber(creditCardNumber) == true) {
+			validationCount++;
+		}
+		System.out.println("Please enter your expiration date (mm/dd): ");
+		expirationDate = UserInput.stringGet();
+		if (validateExpirationDate(expirationDate) == true) {
+			validationCount++;
+		}
+		System.out.println("Please enter the 3 or 4 digit CVV on the back of your card: ");
+		cVV = UserInput.stringGet();
+		if (validateCVV(cVV) == true) {
+			validationCount++;
+		}
+		if (validationCount == 3) {
+			System.out.println("Card accepted, thank you for your business!");
+		}
+	}
 
 	public String getCreditCardNumber() {
 		return creditCardNumber;
@@ -35,9 +57,7 @@ public class CreditCardPayment extends Payment {
 	}
 
 	public boolean validateCreditCardNumber(String creditCardNumber) {
-		return creditCardNumber.matches("^(?:(?<visa>4[0-9]{12}(?:[0-9]{3})?)|" + "(?<mastercard>5[1-5][0-9]{14})|"
-				+ "(?<discover>6(?:011|5[0-9]{2})[0-9]{12})|" + "(?<amex>3[47][0-9]{13})|"
-				+ "(?<diners>3(?:0[0-5]|[68][0-9])?[0-9]{11})|" + "(?<jcb>(?:2131|1800|35[0-9]{3})[0-9]{11}))$");
+		return creditCardNumber.matches("^[0-9]{16}$");
 	}
 
 	public boolean validateExpirationDate(String expirationDate) {
@@ -46,10 +66,6 @@ public class CreditCardPayment extends Payment {
 
 	public boolean validateCVV(String cVV) {
 		return cVV.matches("^[0-9]{3, 4}$");
-	}
-	
-	public void pay() {
-		System.out.println("Payment approved for the amount of: " + getAmount());
 	}
 
 }

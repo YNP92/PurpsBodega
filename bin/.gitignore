@@ -1,20 +1,2 @@
-<<<<<<< HEAD
-/product/
-=======
-<<<<<<< HEAD
-/unitTest.class
-/Test.class
-=======
-/ShoppingCart.class
-/Inventory.class
-/CustomerOrder.class
-/PurpsBodegaMain.class
-<<<<<<< HEAD
-=======
->>>>>>> b2ee37c6ecd86982b739bf634f4f3bb2003ff83b
-<<<<<<< HEAD
->>>>>>> f11cdf1361ca3e4cac9328faa16ded18ba189226
-=======
 /UserInput.class
->>>>>>> NiBranch
->>>>>>> 2d1225bb499969c2092683000553c1073b90fff4
+/product/
