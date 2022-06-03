@@ -1,10 +1,7 @@
 package product;
 
-import java.util.ArrayList;
 import java.util.Map.Entry;
-import java.util.Set;
 import java.util.TreeMap;
-import java.util.TreeSet;
 
 public class Inventory {
 
@@ -52,11 +49,10 @@ public class Inventory {
 
 	}
 	//display this objects inventory
-	public void showInventoryAll() {
+	public void displayInventoryAll() {
 		String header = String.format("%-5s|%20s |%10s|", "ID", "Product Name", "Price");
-		String header1 = String.format("---------------------------------------");
-		System.out.println(header);
-		System.out.println(header1);
+		
+		System.out.println(header+"\r\n"+"-".repeat(header.length()));
 		for (Entry<Integer, Products> entry : getInventory().entrySet()) {
 			String lineItem = String.format("%-5d|%20s |%10s|", entry.getKey(), entry.getValue().getName(),
 					entry.getValue().getPrice());
@@ -64,7 +60,7 @@ public class Inventory {
 
 		}
 
-	
+//implement if enough time
 //	public void showInventoryCatagories() {
 //		//used a set because we only want unique categories.
 //		Set<String> listOfCategories = new TreeSet<String>();
