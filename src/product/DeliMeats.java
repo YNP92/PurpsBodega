@@ -1,7 +1,6 @@
 package product;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 public class DeliMeats extends Products {
 	// Default DATE entry is MMDDYYYY
@@ -44,11 +43,12 @@ public class DeliMeats extends Products {
 	
 	public static LocalDate setExpireDate(int days) {
 		//user the date/time api to get the current date and add 7 days to it. which will represent the expire date
-
 		LocalDate date = LocalDate.now();
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy");
-		
+//		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy");
 		date = date.plusDays(days);
+//		System.out.println(date);
+//		System.out.println(formatter.format(date));
+		 
 ////		String hardDate = date.format(formatter);
 ////		System.out.println("hardDate: "+ hardDate);
 ////		System.out.println(date.format(formatter));

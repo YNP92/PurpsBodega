@@ -15,6 +15,12 @@ public class CashPayment extends Payment {
 		super(amount);
 	}
 
+	public void pay() {
+		System.out.println("Enter amount of money to give cashier.");
+		double tender = UserInput.doubleGet();
+		initialChange = tender;
+	}
+
 	public static double getChange(double tender, double amount) {
 		if (amount < tender) {
 			System.out.println("That isn't enough money");

@@ -1,8 +1,9 @@
 import java.util.TreeMap;
-
+import product.Inventory;
 import product.Products;
 public class ShoppingCart {
 
+	
 	private Inventory catalog;
 	private int[] orderQuantities;
 	private Payment orderPayment;
@@ -37,6 +38,7 @@ public class ShoppingCart {
 		return catalog;
 	}
 
+	//Getters Setters
 	public void setInventory(Inventory catalog) {
 		this.catalog = catalog;
 	}

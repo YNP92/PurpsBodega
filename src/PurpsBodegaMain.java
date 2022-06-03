@@ -1,25 +1,28 @@
-import java.util.TreeMap;
-import java.util.Map.Entry;
-
 import product.DeliMeats;
 import product.Drinks;
 import product.HotDogs;
 import product.Inventory;
-import product.Products;
 
 public class PurpsBodegaMain {
 	public static Inventory inStock = new Inventory();
 
+	public static Cart myCart = new Cart(inStock.getInventory());
+
 	public static void main(String[] args) {
-	
-		
-		
-//following methods populate our inventory with Products
+
+		//Stock our inventory with Products
 		addDrinks();
 		addHotDogs();
 		addDeliMeats();
-		//this shows the current inventory 
-		inStock.showInventoryAll();
+		inStock.displayInventoryAll();
+		myCart.addItem(1, 4);
+		myCart.addItem(3, 3);
+		myCart.addItem(6, 99);
+		myCart.addItem(11, 1);
+		System.out.println(System.lineSeparator());
+		
+		myCart.displayCart();
+
 	}
 
 	public static void addDrinks() {
