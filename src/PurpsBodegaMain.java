@@ -4,25 +4,62 @@ import product.HotDogs;
 import product.Inventory;
 
 public class PurpsBodegaMain {
-	public static Inventory inStock = new Inventory();
-
-	public static Cart myCart = new Cart(inStock.getInventory());
-
+	private static Inventory inStock = new Inventory();
+	private static Cart myCart = new Cart(inStock.getInventory());
+	private static UserInput getInput = new UserInput();
+	private static boolean awdy = false;
+	
 	public static void main(String[] args) {
 
-		//Stock our inventory with Products
+		// Stock our inventory with Products
 		addDrinks();
 		addHotDogs();
 		addDeliMeats();
-		inStock.displayInventoryAll();
-		myCart.addItem(1, 4);
-		myCart.addItem(3, 3);
-		myCart.addItem(6, 99);
-		myCart.addItem(11, 1);
-		System.out.println(System.lineSeparator());
-		
-		myCart.displayCart();
+	
+		while (!awdy) {
+			userMenu();
+			System.out.println("");
+			userAction(getInput.getAction());
+			System.out.println("");
+		}
 
+	}
+
+	public static void userAction(int action) {
+//		switch statement?
+		if (action == 1) {
+			System.out.println("Display Inventory");
+			inStock.displayInventoryAll();
+		}
+		else if(action == 2) {
+			myCart.addItem(getInput.getItem(inStock.getInventory()), getInput.getQuantity());
+		}
+		else if (action == 3) {
+			myCart.removeItem(getInput.getItemToRemove(myCart.getProductId()));
+		}
+		else if (action == 4) {
+			myCart.displayCart();
+		}
+		else if (action == 5) {
+			System.out.println("Checkout");
+			//ask method of payment 
+			//bsed o
+		}
+		else if (action == 6) {
+			System.out.println("Thank you for shopping at PurpsBodega, goodbye");
+			awdy = true;
+		}
+		
+	}
+
+	public static void userMenu() {
+		System.out.println("How may I help you");
+		System.out.println("1. Show me your Inventory");
+		System.out.println("2. Add to Cart");
+		System.out.println("3. Remove from Cart");
+		System.out.println("4. View my Cart");
+		System.out.println("5. Checkout");
+		System.out.println("6. Exit Store");
 	}
 
 	public static void addDrinks() {
