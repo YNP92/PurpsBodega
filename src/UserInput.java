@@ -14,9 +14,9 @@ public class UserInput {
 	private static double doubleInput;
 	private static String stringInput;
 	private static boolean booleanInput;
+	private static String paymentMethod;
 
 	public static String stringGet() {
-		System.out.println("Please enter a text.");
 		stringInput = scnr.nextLine();
 		return stringInput;
 	}
@@ -35,19 +35,19 @@ public class UserInput {
 				}
 			} catch (Exception e) {
 				scnr.nextLine();
-				System.out.println("Your input was not vlaid, try again:");
+				System.out.println("Your input was not valid, try again:");
 			}
 		}
 		return userAction;
 	}
-	
+
 	public int getItem(TreeMap<Integer, Products> inventory) {
 		boolean validAction = false;
 		System.out.println("Please enter the ID of the item you wish to MODIFY: ");
 		while (!validAction) {
 			try {
 				itemSelect = scnr.nextInt();
-				if (itemSelect >= 0 && itemSelect < (inventory.size()-1)){
+				if (itemSelect >= 0 && itemSelect < (inventory.size() - 1)) {
 					validAction = true;
 					break;
 				} else {
@@ -55,7 +55,7 @@ public class UserInput {
 				}
 			} catch (Exception e) {
 				scnr.nextLine();
-				System.out.println("Your input was invlaid, try again:");
+				System.out.println("Your input was invalid, try again:");
 			}
 		}
 		return itemSelect;
@@ -80,22 +80,17 @@ public class UserInput {
 		}
 		return itemSelect;
 	}
-	
-	
-	
-	
-	
-	
-	
+
 	public int getQuantity() {
 		boolean validAction = false;
-		System.out.println("Please enter the QUANTITY you would like to add to your cart(negative quantities are deducted form your current quantity): ");
+		System.out.println(
+				"Please enter the QUANTITY you would like to add to your cart(negative quantities are deducted form your current quantity): ");
 		while (!validAction) {
 			try {
 				quantity = scnr.nextInt();
 //				if (quantity > 0 ){
-					validAction = true;
-					break;
+				validAction = true;
+				break;
 //				} else {
 //					throw new Exception();
 //				}
@@ -106,18 +101,11 @@ public class UserInput {
 		}
 		return quantity;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
+
 	public static double doubleGet() {
 
 		do {
-			System.out.println("Please enter a decimal number");
+			
 			while (!scnr.hasNextDouble()) {
 				System.out.println("Incorrect. Try again. ");
 				scnr.next();
@@ -131,5 +119,19 @@ public class UserInput {
 		System.out.println("Please enter y or n");
 		booleanInput = scnr.nextBoolean();
 		return booleanInput;
+	}
+
+	public static String getPaymentMethod() {
+		do {
+		try {
+			System.out.println("Please enter your payment method (we accept cash, card, and check): ");
+			paymentMethod = scnr.nextLine().toLowerCase();
+		} catch (Exception e) {
+			if(!paymentMethod.equals("cash") || !paymentMethod.equals("card") || !paymentMethod.equals("check"));{
+				System.out.println("We only accept cash, card, and check.");
+			}
+		}
+		} while(!paymentMethod.equals("cash") && !paymentMethod.equals("card") && !paymentMethod.equals("check"));
+		return paymentMethod;
 	}
 }

@@ -1,10 +1,11 @@
 
 public class CreditCardPayment extends Payment {
 
-	private String creditCardNumber, expirationDate, cVV;
-	int validationCount = 0;
+	private static String creditCardNumber, expirationDate, cVV;
+	static int validationCount = 0;
 
-	public void pay() {
+	public static void pay() {
+		do {
 		System.out.println("Please enter your credit card number: ");
 		creditCardNumber = UserInput.stringGet();
 		if (validateCreditCardNumber(creditCardNumber) == true) {
@@ -15,14 +16,17 @@ public class CreditCardPayment extends Payment {
 		if (validateExpirationDate(expirationDate) == true) {
 			validationCount++;
 		}
-		System.out.println("Please enter the 3 or 4 digit CVV on the back of your card: ");
+		System.out.println("Please enter the 3 digit CVV on the back of your card: ");
 		cVV = UserInput.stringGet();
 		if (validateCVV(cVV) == true) {
 			validationCount++;
 		}
 		if (validationCount == 3) {
 			System.out.println("Card accepted, thank you for your business!");
+		} else if (validationCount != 3) {
+			System.out.println("Something went wrong, try entering a valid card information.");
 		}
+		} while(validationCount != 3);
 	}
 
 	public String getCreditCardNumber() {
@@ -30,7 +34,7 @@ public class CreditCardPayment extends Payment {
 	}
 
 	public void setCreditCardNumber(String creditCardNumber) {
-		this.creditCardNumber = creditCardNumber;
+		CreditCardPayment.creditCardNumber = creditCardNumber;
 	}
 
 	public String getExpirationDate() {
@@ -38,7 +42,7 @@ public class CreditCardPayment extends Payment {
 	}
 
 	public void setExpirationDate(String expirationDate) {
-		this.expirationDate = expirationDate;
+		CreditCardPayment.expirationDate = expirationDate;
 	}
 
 	public String getcVV() {
@@ -46,26 +50,26 @@ public class CreditCardPayment extends Payment {
 	}
 
 	public void setcVV(String cVV) {
-		this.cVV = cVV;
+		CreditCardPayment.cVV = cVV;
 	}
 
 	public CreditCardPayment(double amount, String creditCardNumber, String expirationDate, String cVV) {
 		super(amount);
-		this.creditCardNumber = creditCardNumber;
-		this.expirationDate = expirationDate;
-		this.cVV = cVV;
+		CreditCardPayment.creditCardNumber = creditCardNumber;
+		CreditCardPayment.expirationDate = expirationDate;
+		CreditCardPayment.cVV = cVV;
 	}
 
-	public boolean validateCreditCardNumber(String creditCardNumber) {
+	public static boolean validateCreditCardNumber(String creditCardNumber) {
 		return creditCardNumber.matches("^[0-9]{16}$");
 	}
 
-	public boolean validateExpirationDate(String expirationDate) {
+	public static boolean validateExpirationDate(String expirationDate) {
 		return expirationDate.matches("(?:0[1-9]|1[0-2])/[0-9]{2}");
 	}
 
-	public boolean validateCVV(String cVV) {
-		return cVV.matches("^[0-9]{3, 4}$");
+	public static boolean validateCVV(String cVV) {
+		return cVV.matches("^[0-9]{3}$");
 	}
 
 }

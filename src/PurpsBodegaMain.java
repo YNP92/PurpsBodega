@@ -41,9 +41,34 @@ public class PurpsBodegaMain {
 			myCart.displayCart();
 		}
 		else if (action == 5) {
-			System.out.println("Checkout");
-			//ask method of payment 
-			//bsed o
+			String paymentMethod = UserInput.getPaymentMethod();
+			switch(paymentMethod) {
+			case ("cash"):
+				double tender = CashPayment.pay();
+				double change = CashPayment.getChange(tender, myCart.getGrandTotal());
+				myCart.displayCart();
+				System.out.printf("\nTender" + "-".repeat(50) + "%.2f", tender);
+				System.out.printf("\nChange" + "-".repeat(50) + "%.2f", change);
+				System.out.printf("\nBalance" + "-".repeat(50) + "0.00");
+				break;
+			case ("card"):
+				CreditCardPayment.pay();
+				myCart.displayCart();
+				System.out.printf("\nTender" + "-".repeat(50) + "%.2f", myCart.getGrandTotal());
+				System.out.printf("\nChange" + "-".repeat(50) + "0.00");
+				System.out.printf("\nBalance" + "-".repeat(50) + "0.00");
+				break;
+			case("check"):
+				CheckPayment.pay();
+				myCart.displayCart();
+				System.out.printf("\nTender" + "-".repeat(50) + "%.2f", myCart.getGrandTotal());
+				System.out.printf("\nChange" + "-".repeat(50) + "0.00");
+				System.out.printf("\nBalance" + "-".repeat(50) + "0.00");
+				break;
+			}
+			myCart.clearCart();
+			System.out.println("\nYou can either start a new order, or press 6 to exit the program.");
+			
 		}
 		else if (action == 6) {
 			System.out.println("Thank you for shopping at PurpsBodega, goodbye");

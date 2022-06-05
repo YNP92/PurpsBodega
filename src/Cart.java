@@ -94,6 +94,10 @@ public class Cart {
 
 	}
 
+	public double getGrandTotal() {
+		return grandTotal;
+	}
+	
 //Constructor
 	public Cart(TreeMap<Integer, Products> inStock) {
 		// shallowCop
@@ -173,7 +177,7 @@ public class Cart {
 	}
 
 	public double subTotal() {
-
+		subTotal = 0;
 		for (double price : productTotalPrice) {
 			subTotal += price;
 		}
@@ -181,11 +185,13 @@ public class Cart {
 	}
 
 	public double calcTax() {
+		totalTax = 0;
 		totalTax = subTotal * taxRate;
 		return totalTax;
 	}
 
 	public double grandTotal() {
+		grandTotal = 0;
 		grandTotal = calcTax() + subTotal;
 		return grandTotal;
 	}
@@ -223,7 +229,19 @@ public class Cart {
 		System.out.printf("Tax" + "-".repeat(50) + "%.2f", totalTax);
 		System.out.println();
 		System.out.printf("Grand Total" + "-".repeat(50) + "%.2f", grandTotal);
+		
+		
 
 	}
 
+	public void clearCart() {
+        productId.removeAll(productId);
+        productName.removeAll(productName);
+        productQuantity.removeAll(productQuantity);
+        productTotalPrice.removeAll(productTotalPrice);
+        productUnitPrice.removeAll(productUnitPrice);
+        subTotal = 0;
+		totalTax = 0;
+		grandTotal = 0;
+    }
 }
