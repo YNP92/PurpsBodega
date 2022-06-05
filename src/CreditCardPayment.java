@@ -3,8 +3,10 @@ public class CreditCardPayment extends Payment {
 
 	private String creditCardNumber, expirationDate, cVV;
 	int validationCount = 0;
+	boolean usercont = true;
 
 	public void pay() {
+		while(usercont) {
 		System.out.println("Please enter your credit card number: ");
 		creditCardNumber = UserInput.stringGet();
 		if (validateCreditCardNumber(creditCardNumber) == true) {
@@ -22,6 +24,11 @@ public class CreditCardPayment extends Payment {
 		}
 		if (validationCount == 3) {
 			System.out.println("Card accepted, thank you for your business!");
+			usercont = false;
+			break;
+		} else {
+			System.out.println("Your card information was invalid, please try again.");
+		}
 		}
 	}
 
