@@ -6,7 +6,7 @@ import product.Products;
 public class Cart {
 
 	// Fields
-	
+
 	private TreeMap<Integer, Products> inventory = new TreeMap<Integer, Products>();
 //	outer ArrayList is size 5 elements 0-4 (ID, Name, Quantity, Unit Price , Line total)
 // I initially thought an ArrayList of an ArrayList Object would be what we needed to hold the individual product Arrays
@@ -34,7 +34,7 @@ public class Cart {
 //		return cart;
 //	}
 
-	public ArrayList<Integer> getId() {
+	public ArrayList<Integer> getProductId() {
 		return productId;
 	}
 
@@ -93,20 +93,30 @@ public class Cart {
 		// Methods
 
 	}
+
+	public double getGrandTotal() {
+		return grandTotal;
+	}
+	
 //Constructor
 	public Cart(TreeMap<Integer, Products> inStock) {
-		//shallowCop
+		// shallowCop
 		inventory = inStock;
 	}
 
-
-	// add item only if it does not exist in the cart already. 
-	public void addItem(int  id, int quantity) {
+	// add item only if it does not exist in the cart already.
+	public void addItem(int id, int quantity) {
 		if (productId.contains(id)) {
 			int indexOfID = productId.indexOf(id);
 			int newQuantity = productQuantity.get(indexOfID);
 			newQuantity += quantity;
-			productQuantity.set(indexOfID, newQuantity);
+			if (newQuantity <= 0) {
+				removeItem(id);
+				System.out.println(
+						"The amount you removed is more than whats in your cart so we removed the item entirely");
+			} else {
+				productQuantity.set(indexOfID, newQuantity);
+			}
 		} else {
 			try {
 				productId.add(id);
@@ -120,9 +130,13 @@ public class Cart {
 				System.out.println("The ID most likeley is not in the Invenntory");
 			}
 		}
+		subTotal();
+		calcTax();
+		grandTotal();
 	}
 
-	//this method removes the line item by removing the ID's index from each arraylist
+	// this method removes the line item by removing the ID's index from each
+	// arraylist
 	public void removeItem(int id) {
 		try {
 			int indexOfID = productId.indexOf(id);
@@ -131,13 +145,17 @@ public class Cart {
 			productQuantity.remove(indexOfID);
 			productTotalPrice.remove(indexOfID);
 			productUnitPrice.remove(indexOfID);
-			
+			subTotal();
+			calcTax();
+			grandTotal();
+
 		} catch (Exception e) {
 			System.out.println("Something is wrong in removeItem()");
 		}
 	}
-	
-	//removes item  quantity. If the quantity entered exceeds the quantity available in the cart, the item is removed completely 
+
+	// removes item quantity. If the quantity entered exceeds the quantity available
+	// in the cart, the item is removed completely
 	public void reduceQuantity(int id, int quantity) {
 		try {
 			if (productId.contains(id)) {
@@ -146,37 +164,35 @@ public class Cart {
 				newQuantity -= quantity;
 				if (newQuantity <= 0) {
 					removeItem(indexOfID);
-					System.out.println("The amount you removed is more than whats in your cart so we removed the item entirely");
-				}
-				else {
-					productQuantity.set(indexOfID, newQuantity);					
+					System.out.println(
+							"The amount you removed is more than whats in your cart so we removed the item entirely");
+				} else {
+					productQuantity.set(indexOfID, newQuantity);
 				}
 			}
-				
+
 		} catch (Exception e) {
-			System.out.println(id+ " Does not associate with a product in our inveontory");
+			System.out.println(id + " Does not associate with a product in our inveontory");
 		}
 	}
 
-	public  double subTotal() {
-		
-		for (double price : productUnitPrice) {
-			for (int quantity : productQuantity) {
-				//may run into rounding error
-				subTotal += price*quantity;
-			}
+	public double subTotal() {
+		subTotal = 0;
+		for (double price : productTotalPrice) {
+			subTotal += price;
 		}
-		//I don't believe we need a return but it may be easy to work with
 		return subTotal;
 	}
 
 	public double calcTax() {
-		totalTax = subTotal*taxRate;
+		totalTax = 0;
+		totalTax = subTotal * taxRate;
 		return totalTax;
 	}
 
 	public double grandTotal() {
-		grandTotal = calcTax()+subTotal;
+		grandTotal = 0;
+		grandTotal = calcTax() + subTotal;
 		return grandTotal;
 	}
 
@@ -191,20 +207,41 @@ public class Cart {
 //		cart.add(productQuantity);
 //		cart.add(productUnitPrice);
 //		cart.add(productTotalPrice);
-		
-		String header = String.format("%-5s|%20s |%10s|%12s|%12s|", "ID", "Product Name","Quantity", "Unit Price", "Total Price");
-		System.out.println(header+"\r\n"+"-".repeat(header.length()));
-		System.out.println("Cart Size:"+ productId.size());
-		for(int i = 0; i<productId.size();i++) {
-			String lineItem = String.format("%-5d|%20s |%10d|%12.2f|%12.2f|",productId.get(i),productName.get(i), productQuantity.get(i), productUnitPrice.get(i), productTotalPrice.get(i));
+
+		String header = String.format("%-5s|%20s |%10s|%12s|%12s|", "ID", "Product Name", "Quantity", "Unit Price",
+				"Total Price");
+		System.out.println(header + "\r\n" + "-".repeat(header.length()));
+		System.out.println("Cart Size:" + productId.size());
+		for (int i = 0; i < productId.size(); i++) {
+			String lineItem = String.format("%-5d|%20s |%10d|%12.2f|%12.2f|", productId.get(i), productName.get(i),
+					productQuantity.get(i), productUnitPrice.get(i), productTotalPrice.get(i));
 			System.out.println(lineItem);
 		}
+
+		// needs formating
+//		DecimalFormat df = new DecimalFormat("#,###.##");
+		subTotal();
+		calcTax();
+		grandTotal();
+
+		System.out.printf("Sub Total" + "-".repeat(50) + "%.2f", subTotal);
+		System.out.println();
+		System.out.printf("Tax" + "-".repeat(50) + "%.2f", totalTax);
+		System.out.println();
+		System.out.printf("Grand Total" + "-".repeat(50) + "%.2f", grandTotal);
 		
-		//needs formating
-		System.out.println("Sub Total"+"-".repeat(50)+subTotal());
-		System.out.println("Sub Total"+"-".repeat(50)+calcTax());
-		System.out.println("Sub Total"+"-".repeat(50)+grandTotal());
+		
 
 	}
 
+	public void clearCart() {
+        productId.removeAll(productId);
+        productName.removeAll(productName);
+        productQuantity.removeAll(productQuantity);
+        productTotalPrice.removeAll(productTotalPrice);
+        productUnitPrice.removeAll(productUnitPrice);
+        subTotal = 0;
+		totalTax = 0;
+		grandTotal = 0;
+    }
 }
