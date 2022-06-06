@@ -116,6 +116,7 @@ public class Cart {
 						"The amount you removed is more than whats in your cart so we removed the item entirely");
 			} else {
 				productQuantity.set(indexOfID, newQuantity);
+				productTotalPrice.set(indexOfID, (newQuantity * inventory.get(id).getPrice()));
 			}
 		} else {
 			try {
@@ -223,12 +224,13 @@ public class Cart {
 		subTotal();
 		calcTax();
 		grandTotal();
-
-		System.out.printf("Sub Total" + "-".repeat(50) + "%.2f", subTotal);
+		
+		int stringLength = header.length();
+		System.out.printf("Sub Total" + "-".repeat(stringLength-4-"Sub Total".length()) + "%.2f", subTotal);
 		System.out.println();
-		System.out.printf("Tax" + "-".repeat(50) + "%.2f", totalTax);
+		System.out.printf("Tax" + "-".repeat(stringLength-4-"Tax".length()) + "%.2f", totalTax);
 		System.out.println();
-		System.out.printf("Grand Total" + "-".repeat(50) + "%.2f", grandTotal);
+		System.out.printf("Grand Total" + "-".repeat(stringLength-4-"Grand Total".length()) + "%.2f", grandTotal);
 		
 		
 
