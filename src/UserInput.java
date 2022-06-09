@@ -105,7 +105,7 @@ public class UserInput {
 	public static double doubleGet() {
 
 		do {
-			
+
 			while (!scnr.hasNextDouble()) {
 				System.out.println("Incorrect. Try again. ");
 				scnr.next();
@@ -121,17 +121,21 @@ public class UserInput {
 		return booleanInput;
 	}
 
+
+
 	public static String getPaymentMethod() {
 		do {
-		try {
-			System.out.println("Please enter your payment method (we accept cash, card, and check): ");
-			paymentMethod = scnr.nextLine().toLowerCase();
-		} catch (Exception e) {
-			if(!paymentMethod.equals("cash") || !paymentMethod.equals("card") || !paymentMethod.equals("check"));{
-				System.out.println("We only accept cash, card, and check.");
+			try {
+				System.out.println("Please enter your payment method (we accept cash, card, and check): ");
+				paymentMethod = scnr.nextLine().toLowerCase();
+			} catch (Exception e) {
+				if (!paymentMethod.equals("cash") || !paymentMethod.equals("card") || !paymentMethod.equals("check"))
+					;
+				{
+					System.out.println("We only accept cash, card, and check.");
+				}
 			}
-		}
-		} while(!paymentMethod.equals("cash") && !paymentMethod.equals("card") && !paymentMethod.equals("check"));
+		} while (!paymentMethod.equals("cash") && !paymentMethod.equals("card") && !paymentMethod.equals("check"));
 		return paymentMethod;
 	}
 }
