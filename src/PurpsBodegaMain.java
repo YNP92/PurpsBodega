@@ -46,6 +46,7 @@ public class PurpsBodegaMain {
 			case ("cash"):
 				double tender = CashPayment.pay();
 				double change = CashPayment.getChange(tender, myCart.getGrandTotal());
+				System.out.println("\n RECEIPT\n");
 				myCart.displayCart();
 				System.out.printf("\nTender" + "-".repeat(50) + "%.2f", tender);
 				System.out.printf("\nChange" + "-".repeat(50) + "%.2f", change);
@@ -53,6 +54,7 @@ public class PurpsBodegaMain {
 				break;
 			case ("card"):
 				CreditCardPayment.pay();
+				System.out.println("\n RECEIPT\n");
 				myCart.displayCart();
 				System.out.printf("\nTender" + "-".repeat(50) + "%.2f", myCart.getGrandTotal());
 				System.out.printf("\nChange" + "-".repeat(50) + "0.00");
@@ -60,6 +62,7 @@ public class PurpsBodegaMain {
 				break;
 			case("check"):
 				CheckPayment.pay();
+				System.out.println("\n RECEIPT\n");
 				myCart.displayCart();
 				System.out.printf("\nTender" + "-".repeat(50) + "%.2f", myCart.getGrandTotal());
 				System.out.printf("\nChange" + "-".repeat(50) + "0.00");
